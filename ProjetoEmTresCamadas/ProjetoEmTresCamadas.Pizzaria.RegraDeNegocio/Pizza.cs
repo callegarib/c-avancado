@@ -25,19 +25,7 @@ namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
 
         }
 
-        public Pizza CriarPizza
-            (string sabor, TamanhoDePizza tamanhoDePizza, string descricao = "")
-        {
-            Sabor = sabor;
-            TamanhoDePizza = tamanhoDePizza;
-            if (string.IsNullOrEmpty(descricao))
-            {
-                Descricao = descricao;
-            }
-            return this;
-        }
-
-        public string DefinirSabor(string sabor)
+       public string DefinirSabor(string sabor)
         {
             if (sabor == "C")
             {
@@ -47,7 +35,7 @@ namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
             {
                 sabor = "Frango";
             }
-            return sabor;
+            return Sabor;
         }
 
         public string DefinirTamanho(string tamanho)
@@ -76,6 +64,11 @@ namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
                     }
             }
             return Enum.GetName(TamanhoDePizza);
+        }
+
+        public override string ToString()
+        {
+            return $"Sua pizza é de sabor {Sabor} e tamanho {TamanhoDePizza}";
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
@@ -34,6 +35,47 @@ namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
                 Descricao = descricao;
             }
             return this;
+        }
+
+        public string DefinirSabor(string sabor)
+        {
+            if (sabor == "C")
+            {
+                sabor = "Calabresa";
+            }
+            else if (sabor == "F")
+            {
+                sabor = "Frango";
+            }
+            return sabor;
+        }
+
+        public string DefinirTamanho(string tamanho)
+        {
+            switch (tamanho)
+            {
+                case "P":
+                    {
+                        TamanhoDePizza = TamanhoDePizza.Pequena;
+                        break;
+                    }
+                case "M":
+                    {
+                        TamanhoDePizza = TamanhoDePizza.Media;
+                        break;
+                    }
+                case "G":
+                    {
+                        TamanhoDePizza = TamanhoDePizza.Grande;
+                        break;
+                    }
+                default:
+                    {
+                        throw new ArgumentException("Tamanho não definido");
+
+                    }
+            }
+            return Enum.GetName(TamanhoDePizza);
         }
     }
 }

@@ -56,7 +56,7 @@ public class PizzaDao
 
     }
 
-    public void ObterPizzas()
+    public List<Pizza> ObterPizzas()
     {
         List<Pizza> pizzas = new List<Pizza>();
 
@@ -87,6 +87,7 @@ public class PizzaDao
                 }
 
             }
+            return pizzas;
         }
     }
 }

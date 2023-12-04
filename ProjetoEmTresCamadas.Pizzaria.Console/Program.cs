@@ -27,14 +27,14 @@ if(resposta == "S")
     Console.WriteLine(infoPizzas);
     
     
-
     var cliente = new Cliente();
     Console.WriteLine("Digite seu nome:");
     var nome = Console.ReadLine();
     cliente.Nome = nome;
     clienteDao.CriarCliente(cliente);
     var clientes = clienteDao.ObterClientes();
-    Console.WriteLine($"Cliente: {cliente}");
+    var infoClientes = clienteDao.ObterInformacoesClientes(); 
+    Console.WriteLine(infoClientes);
 
     var pedido = new Pedido();
     Console.WriteLine("Digite o código do cliente:");
@@ -43,29 +43,14 @@ if(resposta == "S")
     Console.WriteLine("Digite o código da pizza:");
     var PizzaId = Convert.ToInt32(Console.ReadLine());
     pedido.PizzaId = PizzaId;
-
-    pedidoDao.CriarPedido(PizzaId, ClienteId); // Passando os IDs diretamente para o método
-
+    pedidoDao.CriarPedido(PizzaId, ClienteId); 
     var pedidos = pedidoDao.ObterPedidos();
-
-
+    var infoPedidos = pedidoDao.ObterInformacoesPedidos(); 
+    Console.WriteLine(infoPedidos);
 
     /* pedidoDao.CriarPedido(pizzas.Last(), clientes.Last());
     var pedidos = pedidoDao.ObterPedidos; */
 
-
-
-
-
-
-
-
-    
-    Console.WriteLine($"Sua pizza é: {pizza}");
-    
-
 }
-
-
 Console.WriteLine("Fim");
 

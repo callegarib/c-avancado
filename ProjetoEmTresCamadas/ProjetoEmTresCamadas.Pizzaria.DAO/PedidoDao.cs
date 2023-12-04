@@ -135,5 +135,17 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO
 
             return pedidos;
         }
+
+        public string ObterInformacoesPedidos()
+        {
+        List<Pedido> pedidos = ObterPedidos();        
+        StringBuilder pedidoInfo = new StringBuilder();
+        foreach (var pedido in pedidos)
+        {
+            pedidoInfo.AppendLine($"ID: {pedido.Id} - ID DO CLIENTE: {pedido.ClienteId} - ID DA PIZZA: {pedido.PizzaId}");
+        }
+
+        return pedidoInfo.ToString(); 
+        }
     }
 }

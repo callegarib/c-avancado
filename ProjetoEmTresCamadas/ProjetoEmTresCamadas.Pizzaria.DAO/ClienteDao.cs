@@ -57,7 +57,7 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO
         }
 
         public List<Cliente> ObterClientes()
-            {
+        {
                 List<Cliente> clientes = new List<Cliente>();
 
                 using (
@@ -87,7 +87,20 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO
                     }
                 }
             return clientes;
-            }
+        }
+
+        public string ObterInformacoesClientes()
+        {
+        List<Cliente> clientes = ObterClientes();        
+        StringBuilder clienteInfo = new StringBuilder();
+        foreach (var cliente in clientes)
+        {
+            clienteInfo.AppendLine($"ID: {cliente.Id} - Nome: {cliente.Nome}");
+        }
+
+        return clienteInfo.ToString(); 
+        }
+
 
 
     }

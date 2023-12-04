@@ -38,7 +38,7 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO
             }
         }
 
-        public void CriarPedido(Pizza pizzaVo, Cliente clienteVo)
+        /* public void CriarPedido(Pizza pizzaVo, Cliente clienteVo)
         {
             using (
                 var sqlConnection
@@ -91,8 +91,49 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO
                 }
             }
             return pedidos;
+        } */
+
+        public void CriarPedido(int clienteId, int pizzaId)
+        {
+            using (var sqlConnection = new SqliteConnection(ConnectionString))
+            {
+                sqlConnection.Open();
+                using (var cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = @$"INSERT INTO TB_PEDIDO (CLIENTE_ID, PIZZA_ID) VALUES({clienteId}, {pizzaId})";
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
+        public List<Pedido> ObterPedidos()
+        {
+            List<Pedido> pedidos = new List<Pedido>();
 
+            using (var sqlConnection = new SqliteConnection(ConnectionString))
+            {
+                sqlConnection.Open();
+                using (var command = sqlConnection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT * FROM TB_PEDIDO";
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Pedido pedido = new Pedido
+                            {
+                                Id = Convert.ToInt32(reader["ID"]),
+                                ClienteId = Convert.ToInt32(reader["CLIENTE_ID"]),
+                                PizzaId = Convert.ToInt32(reader["PIZZA_ID"])
+                            };
+                            pedidos.Add(pedido);
+                        }
+                    }
+                }
+            }
+
+            return pedidos;
+        }
     }
 }

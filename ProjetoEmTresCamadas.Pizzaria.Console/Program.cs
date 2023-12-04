@@ -23,6 +23,10 @@ if(resposta == "S")
     Console.WriteLine($"O tamanho escolhido foi {pizza.DefinirTamanho(tamanho)}");
     pizzaDao.CriarPizza(pizza);
     var pizzas = pizzaDao.ObterPizzas();
+    var infoPizzas = pizzaDao.ObterInformacoesPizzas(); // Chamar o método ObterInformacoesPizzas da instância de PizzaDao
+    Console.WriteLine(infoPizzas);
+    
+    
 
     var cliente = new Cliente();
     Console.WriteLine("Digite seu nome:");
@@ -30,19 +34,24 @@ if(resposta == "S")
     cliente.Nome = nome;
     clienteDao.CriarCliente(cliente);
     var clientes = clienteDao.ObterClientes();
+    Console.WriteLine($"Cliente: {cliente}");
 
     var pedido = new Pedido();
-    //Console.WriteLine("Digite o código do cliente:");
-    //var ClienteId = Convert.ToInt32(Console.ReadLine());
-    //pedido.ClienteId = ClienteId;
-    //Console.WriteLine("Digite o código da pizza:");
-    //var PizzaId = Convert.ToInt32(Console.ReadLine());
-    //pedido.PizzaId = PizzaId;
+    Console.WriteLine("Digite o código do cliente:");
+    var ClienteId = Convert.ToInt32(Console.ReadLine());
+    pedido.ClienteId = ClienteId;
+    Console.WriteLine("Digite o código da pizza:");
+    var PizzaId = Convert.ToInt32(Console.ReadLine());
+    pedido.PizzaId = PizzaId;
+
+    pedidoDao.CriarPedido(PizzaId, ClienteId); // Passando os IDs diretamente para o método
+
+    var pedidos = pedidoDao.ObterPedidos();
 
 
 
-    pedidoDao.CriarPedido(pizzas.Last(), clientes.Last());
-    var pedidos = pedidoDao.ObterPedidos;
+    /* pedidoDao.CriarPedido(pizzas.Last(), clientes.Last());
+    var pedidos = pedidoDao.ObterPedidos; */
 
 
 
@@ -51,7 +60,7 @@ if(resposta == "S")
 
 
 
-    Console.WriteLine($"Cliente: {cliente}");
+    
     Console.WriteLine($"Sua pizza é: {pizza}");
     
 

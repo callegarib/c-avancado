@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 
 namespace ProjetoEmTresCamadas.Pizzaria.DAO;
 
@@ -90,5 +91,23 @@ public class PizzaDao
             return pizzas;
         }
     }
+
+    public string ObterInformacoesPizzas()
+    {
+    List<Pizza> pizzas = ObterPizzas(); // Obtém as pizzas do banco de dados usando o método existente
+
+    // Cria uma string para armazenar as informações das pizzas
+    StringBuilder pizzaInfo = new StringBuilder();
+
+    foreach (var pizza in pizzas)
+    {
+        // Adiciona as informações de cada pizza à string
+        pizzaInfo.AppendLine($"ID: {pizza.Id} - Sabor: {pizza.Sabor} - Descrição: {pizza.Descricao} - Tamanho: {pizza.TamanhoDePizza}");
+    }
+
+    return pizzaInfo.ToString(); // Retorna a string com as informações das pizzas
+    }
+
+    
 }
     

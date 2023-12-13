@@ -32,7 +32,7 @@ public class CalculoINSS {
         {
             calcularINSS = CalcularFaixa2;
         }
-        else if (salario > 2571.29 && salario <= 3856.94)
+        else if (salario > 2571.30 && salario <= 3856.94)
         {
             calcularINSS = CalcularFaixa3;
         }

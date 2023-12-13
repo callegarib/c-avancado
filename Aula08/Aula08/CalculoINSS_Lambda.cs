@@ -28,3 +28,24 @@ namespace Aula08
         }
     }
 }
+
+//Resolução do Professor:
+
+//CalcularInss calcularInss = CalcularFaixa1;
+//if (salario > 1320 && salario < 2571.30)
+//{
+//    calcularInss = CalcularFaixa2;
+//}
+//else if (salario > 2571.30 && salario < 3856.95)
+//{
+//    calcularInss = salario =>
+//    {
+//        return salario * 0.012;
+//    };
+//}
+//else if (salario > 3856.95 && salario < 7507.29)
+//{
+//    calcularInss = salario => salario * 0.014;
+//}
+//else
+//    calcularInss = salario => 7507.29 * 0.14;
